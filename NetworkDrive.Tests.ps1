@@ -3,10 +3,10 @@ Import-Module "$PSScriptRoot\NetworkDrive.psm1" -Force
 
 Describe "NetworkDrive Class" {
     It "Creates a valid instance" {
-        $d = [NetworkDrive]::new("Z", '\\VAGWESQLEVMS01.vha.med.va.gov\E$', "va\oitwnywillij0")
+        $d = [NetworkDrive]::new("Z", '\\Server\Share', "domain\username")
         $d.DriveLetter | Should -Be "Z"
-        $d.SharePath   | Should -Be '\\VAGWESQLEVMS01.vha.med.va.gov\E$'
-        $d.Username    | Should -Be "va\oitwnywillij0"
+        $d.SharePath   | Should -Be '\\Server\Share'
+        $d.Username    | Should -Be "domain\username"
     }
 
     It "Returns a PSCredential from GetCredential" {
